@@ -21,7 +21,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::resource('/admin/candidate', CandidateController::class)->names('admin.candidate');
+    Route::resource('/admin/candidate', CandidateController::class)->names('admin.candidate')->except('show');
 
     Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
 });

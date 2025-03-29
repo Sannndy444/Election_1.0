@@ -39,10 +39,10 @@
                         </button>
                         <ul id="dropdown-candidate" class="hidden py-2 space-y-2">
                             <li>
-                                <a href="#" class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">List Candidate</a>
+                                <a href="{{ route('admin.candidate.index') }}" class="flex items-center p-2 pl-11 w-full text-base font-normal @if(Request::routeIs('admin.candidate.index')) rounded-lg bg-gray-200 dark:bg-gray-700 @endif hover:bg-gray-100 dark:hover:bg-gray-700 group">List Candidate</a>
                             </li>
                             <li>
-                                <a href="{{ route('admin.candidate.create') }}" class="flex items-center p-2 pl-11 w-full text-base font-normal @if(Request::routeIs('admin.candidate')) rounded-lg bg-gray-200 dark:bg-gray-700 @endif hover:bg-gray-100 dark:hover:bg-gray-700 group">Add Candidate</a>
+                                <a href="{{ route('admin.candidate.create') }}" class="flex items-center p-2 pl-11 w-full text-base font-normal @if(Request::routeIs('admin.candidate.create')) rounded-lg bg-gray-200 dark:bg-gray-700 @endif hover:bg-gray-100 dark:hover:bg-gray-700 group">Add Candidate</a>
                             </li>
                         </ul>
                     </li>

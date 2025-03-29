@@ -8,6 +8,13 @@ use Illuminate\Support\Facades\Validator;
 
 class CandidateController extends Controller
 {
+    public function index()
+    {
+        $candidates = Candidate::all();
+
+        return view('admin.candidate.list', compact('candidates'));
+    }
+
     public function create()
     {
         return view('admin.candidate.create');
@@ -41,7 +48,7 @@ class CandidateController extends Controller
                     $photoPath = time() . '.' . $photo->getClientOriginalExtension();
                     $photo->storeAs('photo', $photoPath, 'public');
                 } else {
-                    $photoPath = 'photo/default-photo.png';                
+                    $photoPath = 'default-photo.png';                
                 }
                 // dd($photoPath);
 
