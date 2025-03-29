@@ -60,4 +60,16 @@ class CandidateController extends Controller
 
             return redirect()->route('admin.candidate.create')->with('success', 'Candidate add succesfully');
     }
+
+    public function destroy(Candidate $candidate)
+    {
+        try {
+            $candidate->delete();
+            return redirect()->route('admin.candidate.index')
+                            ->with('success', 'Candidate delete successfully.');
+        } catch (\Exception $e) {
+            return redirect()->route('admin.candidate.index')
+                            ->with('error', 'Candidate delete error.');
+        }
+    }
 }
