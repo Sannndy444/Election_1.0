@@ -9,6 +9,7 @@ class Candidate extends Model
     protected $table = 'candidates';
 
     protected $guarded = 'id';
+    protected $fillable = ['name', 'photo', 'description'];
 
     public function elections()
     {

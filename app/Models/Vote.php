@@ -9,6 +9,7 @@ class Vote extends Model
     protected $table = 'votes';
 
     protected $guarded = 'id';
+    protected $fillable = ['user_id', 'election_id'];
 
     public function user()
     {
