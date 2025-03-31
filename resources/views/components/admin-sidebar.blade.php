@@ -56,10 +56,10 @@
                         </button>
                         <ul id="dropdown-election" class="hidden py-2 space-y-2">
                             <li>
-                                <a href="#" class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">List Election</a>
+                                <a href="{{ route('admin.election.index') }}" class="flex items-center p-2 pl-11 w-full text-base font-normal @if(Request::routeIs('admin.election.index')) rounded-lg bg-gray-200 dark:bg-gray-700 @endif hover:bg-gray-100 dark:hover:bg-gray-700 group">List Election</a>
                             </li>
                             <li>
-                                <a href="#" class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Add Election</a>
+                                <a href="{{ route('admin.election.create') }}" class="flex items-center p-2 pl-11 w-full text-base font-normal @if(Request::routeIs('admin.election.create')) rounded-lg bg-gray-200 dark:bg-gray-700 @endif hover:bg-gray-100 dark:hover:bg-gray-700 group">Add Election</a>
                             </li>
                         </ul>
                     </li>
@@ -73,10 +73,10 @@
                         </button>
                         <ul id="dropdown-authentication" class="hidden py-2 space-y-2">
                             <li>
-                                <a href="{{ route('admin.user.index') }}" class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">List User</a>
+                                <a href="{{ route('admin.user.index') }}" class="flex items-center p-2 pl-11 w-full text-base font-normal @if(Request::routeIs('admin.user.index')) rounded-lg bg-gray-200 dark:bg-gray-700 @endif hover:bg-gray-100 dark:hover:bg-gray-700 group">List User</a>
                             </li>
                             <li>
-                                <a href="{{ route('admin.user.verif') }}" class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Verification</a>
+                                <a href="{{ route('admin.user.verif') }}" class="flex items-center p-2 pl-11 w-full text-base font-normal @if(Request::routeIs('admin.user.verif')) rounded-lg bg-gray-200 dark:bg-gray-700 @endif hover:bg-gray-100 dark:hover:bg-gray-700 group">Verification</a>
                             </li>
                         </ul>
                     </li>

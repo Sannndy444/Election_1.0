@@ -11,8 +11,13 @@ class Candidate extends Model
     protected $guarded = 'id';
     protected $fillable = ['name', 'photo', 'description'];
 
-    public function elections()
+    public function electionOne()
     {
-        return $this->hasMany(Election::class);
+        return $this->hasMany(Election::class, 'candidate_1_id');
+    }
+
+    public function electionTwo()
+    {
+        return $this->hasMany(Election::class, 'candidate_2_id');
     }
 }

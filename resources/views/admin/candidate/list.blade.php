@@ -51,7 +51,7 @@
                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">List Candidate</h5>
                 <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
-                <!-- Wrapper untuk flex -->
+                <!-- Card Candidate anjeng -->
                 <div class="flex flex-wrap justify-start gap-8 px-6 pb-6">
                     @foreach ($candidates as $c)
                     <div class="w-full sm:w-1/2 md:w-full lg:w-64 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-700 dark:border-gray-400">

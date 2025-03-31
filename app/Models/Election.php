@@ -9,11 +9,16 @@ class Election extends Model
     protected $table = 'elections';
 
     protected $guarded = 'id';
-    protected $fillable = ['candidate_id', 'title', 'description', 'start_date', 'end_date', 'status'];
+    protected $fillable = ['photo_election', 'candidate_1_id', 'candidate_2_id', 'title', 'description', 'start_date', 'end_date', 'status'];
 
-    public function candidates()
+    public function candidatesOne()
     {
-        return $this->belongsTo(Candidate::class);
+        return $this->belongsTo(Candidate::class, 'candidate_1_id');
+    }
+
+    public function candidatesTwo()
+    {
+        return $this->belongsTo(Candidate::class, 'candidate_2_id');
     }
 
     public function votes()

@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('elections', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('candidate_id')->constrained('candidates')->onDelete('cascade');
+            $table->string('photo_election');
+            $table->foreignId('candidate_1_id')->constrained('candidates')->onDelete('cascade');
+            $table->foreignId('candidate_2_id')->constrained('candidates')->onDelete('cascade');
             $table->string('title');
             $table->text('description');
             $table->timestamp('start_date');
