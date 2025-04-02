@@ -42,6 +42,8 @@ Route::middleware(['auth', 'role:user|admin'])->group(function () {
     Route::get('/election/draft', [UserElectionController::class, 'draft'])->name('user.election.draft');
     Route::get('/election/active', [UserElectionController::class, 'active'])->name('user.election.active');
     Route::get('/election/history', [UserElectionController::class, 'history'])->name('user.election.history');
+    Route::get('/election/vote/{id}', [UserElectionController::class, 'vote'])->name('user.election.vote');
+    Route::post('/vote/election', [UserElectionController::class, 'voteStore'])->name('user.vote.store');
 });
 
 require __DIR__.'/auth.php';
