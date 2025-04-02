@@ -27,6 +27,8 @@ class UpdateElectionStatusListener
             $election->status = 'active';
         } elseif ($election->end_date < $currentDate) {
             $election->status = 'finished';
+        } else {
+            $election->status = 'draft';
         }
 
         $election->save();

@@ -44,7 +44,7 @@
     </div>
 
     <div class="flex">
-        <x-adminsidebar></x-adminsidebar>
+        <x-user-sidebar></x-user-sidebar>
 
         <div class="flex-1 p-6 ml-56">
             <div class="block max-w-2xlg h-full p-6 bg-white rounded-lg shadow-sm dark:bg-gray-800">
@@ -53,7 +53,7 @@
 
                 <!-- Card Candidate anjeng -->
                 <div class="flex flex-wrap justify-start gap-8 px-6 pb-6">
-                    @foreach ($candidates as $c)
+                    @foreach ($candidate as $c)
                     <div class="w-full sm:w-1/2 md:w-full lg:w-64 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-700 dark:border-gray-400">
                         <div>
                             <img class="rounded-t-lg w-full h-48 object-cover" src="{{ asset('storage/photo/' . $c->photo) }}" alt="" />
@@ -63,17 +63,13 @@
                                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $c->name }}</h5>
                             </a>
                             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ $c->description }}</p>
-                            <form action="{{ route('admin.candidate.destroy', $c) }}" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 focus:outline-none dark:hover:bg-red-700 dark:focus:ring-red-800">
-                                    Delete
-                                </button>
-                            </form>
                         </div>
                     </div>
                     @endforeach
                 </div>
+
+
+
             </div>
         </div>
     </div>
