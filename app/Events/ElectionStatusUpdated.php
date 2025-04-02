@@ -36,7 +36,7 @@ class ElectionStatusUpdated
     public function broadcastOn(): array
     {
         return [
-            new PrivateChannel('channel-name'),
+            new Channel('election-status-channel'),
         ];
     }
 }

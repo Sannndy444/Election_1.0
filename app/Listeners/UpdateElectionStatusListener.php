@@ -17,13 +17,7 @@ class UpdateElectionStatusListener
     {
         //
     }
-
-    /**
-     * Handle the event.
-     *
-     * @param  \App\Events\ElectionStatusUpdated  $event
-     * @return void
-     */
+    
     public function handle(ElectionStatusUpdated $event): void
     {
         $election = $event->election;

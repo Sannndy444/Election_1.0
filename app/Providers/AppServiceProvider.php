@@ -8,6 +8,11 @@ use App\Listeners\UpdateElectionStatusListener;
 
 class AppServiceProvider extends ServiceProvider
 {
+    protected $listen = [
+        ElectionStatusUpdated::class => [
+            UpdateElectionStatusListener::class,
+        ],
+    ];
     /**
      * Register any application services.
      */

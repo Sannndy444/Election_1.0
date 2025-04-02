@@ -30,6 +30,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/user/verif', [Usercontroller::class, 'verif'])->name('admin.user.verif');
     Route::get('/admin/user/verification/{id}', [Usercontroller::class, 'verification'])->name('admin.user.verification');
     Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+    Route::get('admin/election/{id}/detail', [ElectionController::class, 'showDetail'])->name('admin.election.showDetail');
 });
 
 Route::middleware(['auth', 'role:user|admin'])->group(function () {

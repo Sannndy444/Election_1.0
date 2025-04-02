@@ -10,11 +10,33 @@ use App\Events\ElectionStatusUpdated;
 
 class ElectionController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        // dd($request->toArray());
+
         $election = Election::with('candidatesOne', 'candidatesTwo')->get();
 
         return view('admin.election.list', compact('election'));
+    }
+
+    public function showDetail($id)
+    {
+        $election = Election::find($id);
+
+        if (!$election) {
+            return response()->json(['error' => 'Election not found'], 404);
+        }
+
+        return response()->json([
+            'id' => $election->id,
+            'title' => $election->title,
+            'candidate_one' => $election->candidatesOne ? $election->candidatesOne->name : 'No candidate found',
+            'candidate_two' => $election->candidatesTwo ? $election->candidatesTwo->name : 'No candidate found',
+            'startDate' => $election->start_date ? $election->start_date : 'No start date found',
+            'endDate' => $election->end_date ? $election->end_date : 'No end date found',
+            'description' => $election->description ? $election->description : 'No description found',
+            'status' => $election->status,
+        ]);
     }
 
     public function create()
@@ -77,5 +99,18 @@ class ElectionController extends Controller
             event(new ElectionStatusUpdated($election));
 
             return redirect()->route('admin.election.create')->with('success', 'Successfully made the election');
+    }
+
+    public function destroy(Election $election)
+    {
+        // dd($election->toArray());
+
+        try {
+            $election->delete();
+            return redirect()->route('admin.election.index')->with('success', 'Election delete succesfully');
+        } catch (\Exception $e) {
+            return redirect()->route('admin.election.index')
+                            ->with('error', 'Election Delete error');
+        }
     }
 }
