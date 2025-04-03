@@ -11,9 +11,14 @@ class UserElectionController extends Controller
 {
     public function active()
     {
-        $election = Election::with('candidatesOne', 'candidatesTwo')
-                            ->where('status', 'active')
-                            ->get();
+        $user = Auth::user();
+
+        $election = Election::whereDoesntHave('votes', function ($q) use ($user) {
+            $q->where('user_id', $user->id);
+        })
+        ->with('candidatesOne', 'candidatesTwo')
+        ->where('status', 'active')
+        ->get();
 
         // dd($election);
 
@@ -30,11 +35,22 @@ class UserElectionController extends Controller
 
     public function history()
     {
-        return view('user.election.history');
+        $user = Auth::user();
+
+        $election = Election::whereHas('votes', function ($q) use ($user) {
+                $q->where('user_id', $user->id);
+            })
+            ->with('candidatesOne', 'candidatesTwo')
+            ->get();
+
+            // dd($election);
+        return view('user.election.history', compact('election'));
     }
 
     public function vote($id)
     {
+        // dd($id);
+
         $user = Auth::user();
 
         $election = Election::with('candidatesOne', 'candidatesTwo')

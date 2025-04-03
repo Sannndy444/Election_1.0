@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\AdminVoteController;
 use App\Http\Controllers\UserDashboardController;
 use App\Http\Controllers\CandidateController;
 use App\Http\Controllers\UserController;
@@ -31,8 +32,10 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     Route::get('/admin/user/verif', [Usercontroller::class, 'verif'])->name('admin.user.verif');
     Route::get('/admin/user/verification/{id}', [Usercontroller::class, 'verification'])->name('admin.user.verification');
-    Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+    Route::get('/admin/home', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
     Route::get('admin/election/{id}/detail', [ElectionController::class, 'showDetail'])->name('admin.election.showDetail');
+    Route::get('/admin/vote/list', [AdminVoteController::class, 'list'])->name('admin.vote.list');
+    Route::get('/admin/vote/detail/{id}', [AdminVoteController::class, 'detail'])->name('admin.vote.detail');
 });
 
 Route::middleware(['auth', 'role:user|admin'])->group(function () {

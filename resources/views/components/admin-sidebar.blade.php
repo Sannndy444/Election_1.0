@@ -26,7 +26,13 @@
                     <li>
                         <a href="{{ route('admin.dashboard') }}" class="flex items-center p-2 text-base font-normal @if(Request::routeIs('admin.dashboard')) rounded-lg bg-gray-200 dark:bg-gray-700 @endif hover:bg-gray-100 dark:hover:bg-gray-700 group">
                             <i class="fa-solid fa-house"></i>
-                            <span class="ml-3">Dashboard</span>
+                            <span class="ml-3">Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.vote.list') }}" class="flex items-center p-2 text-base font-normal @if(Request::routeIs('admin.vote.list', 'admin.vote.detail')) rounded-lg bg-gray-200 dark:bg-gray-700 @endif hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                            <i class="fa-solid fa-square-poll-vertical"></i>
+                            <span class="ml-3">Vote</span>
                         </a>
                     </li>
                     <li>

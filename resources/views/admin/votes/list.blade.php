@@ -4,16 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Election History</title>
+    <title>List Votes</title>
 </head>
 
 <body>
-
     <div class="flex">
-        <x-user-sidebar></x-user-sidebar>
+        <x-adminsidebar></x-adminsidebar>
+
         <div class="flex-1 p-6 ml-56">
             <div class="block max-w-2xlg h-full p-6 bg-white rounded-lg shadow-sm dark:bg-gray-800">
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">List Election History</h5>
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">List Votes</h5>
                 <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
                 <div class="flex flex-wrap justify-start gap-8 px-6 pb-6">
@@ -66,9 +66,20 @@
                                     </p>
                                 </div>
                             </div>
-                            <div class="flex justify-end">
+                            <div class="flex justify-center justify-between">
                                 <div>
+                                    <a href="{{ route('admin.vote.detail', $e->id) }}">
+                                        <button type="button" class="text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center me-1 mb-1 dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800" data-election-id="{{ $e->id }}">
+                                            Detail
+                                        </button>
+                                    </a>
+                                </div>
+                                <div>
+                                    @if ($e->status === 'active')
                                     <button type="button" class="text-yellow-400 border border-yellow-400 font-medium rounded-lg px-3 py-2 text-center me-1 mb-1">Active</button>
+                                    @elseif ($e->status === 'finished')
+                                    <button type="button" class="text-green-700 border border-green-700 font-medium rounded-lg px-3 py-2 text-center me-1 mb-1">Finished</button>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -76,9 +87,9 @@
                     @endforeach
                     @endif
                 </div>
-
             </div>
         </div>
+    </div>
 </body>
 
 </html>
